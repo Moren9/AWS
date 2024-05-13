@@ -1,0 +1,44 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+#login {
+    text-align: center;
+}
+
+#login form {
+    display: inline-block;
+}
+
+#login label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#login input {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#login button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#contenuto {
+    display: none;
+}
