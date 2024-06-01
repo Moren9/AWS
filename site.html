@@ -9,50 +9,176 @@
 </head>
 
 <body>
-    <header>
-        <h1>Relazione Progetto</h1>
-    </header>
+<header>
+    <h1>Relazione Progetto</h1>
+</header>
 
-    <main class="container">
+<main class="container">
 
-        <section>
-            <h2>Tecnologie Utilizzate</h2>
-            <ul>
-                <li>AWS (Amazon Web Services)</li>
-                <li>Docker</li>
-                <li>HTML5 e CSS3</li>
-                <li>HTTPS con Certificato Self-Signed</li>
-                <li>Form di Login Sicuro</li>
-            </ul>
-        </section>
+    <section>
+        <h2>Introduzione</h2>
+        <p>Questo sito web, ospitato su AWS, descrive come ho configurato un server sicuro utilizzando contenitori Docker e i vari componenti impiegati.</p>
+    </section>
 
-        <section>
-            <h2>Inizio</h2>
-            <p>Per la realizzazione del compito il primo passo necessario è stato quello di creare una istanza AWS "EC2";
-                procedendo poi con la configurazione di quest'ultima, inserendo nome, VM e coppia di chiavi utilizzata.
-            </p>
-        </section>
+    <section>
+        <h2>Tecnologie Utilizzate</h2>
+        <ul>
+            <li>Docker</li>
+            <li>Docker Compose</li>
+            <li>Docker Networks</li>
+            <li>Dockerfile</li>
+            <li>OpenSSL (per HTTPS)</li>
+            <li>Apache</li>
+            <li>PHP</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+        </ul>
+    </section>
 
-        <section>
-            <h2>Server</h2>
-            <p>Per la configurazione del server sarà necessario possedere il software PuTTy, in alternativa si può avviare 
-                il terminale direttamente dalla scheda di AWS; si procede installando docker in modo tale da consentire la comunicazione
-                tra i diversi container.
-            </p>
-        </section>
+    <section>
+        <h2>Docker</h2>
+        <p>Docker è una piattaforma di containerizzazione che facilita lo sviluppo, la distribuzione e la gestione delle applicazioni. In questo progetto, Docker è stato utilizzato per creare e gestire i container che ospitano il server web Apache e PHP, garantendo un ambiente isolato e portatile.</p>
+    </section>
 
-        <section>
-            <h2>Progetto</h2>
-            <p>Nelle, potremmo definirle, fasi finali del lavoro sarà necessario creare le varie cartelle contenute nel progetto,
-                inserire i file contenenti il codice per ogni parte del lavoro di cui avremo bisogno e, per testare, infine, il 
-                tutto non basterà altro che inserire l'indirizzo IP pubblico della nostra interfaccia su un qualsiasi browser web.
-            </p>
-        </section>
-    </main>
+    <section>
+        <h2>Docker Compose</h2>
+        <p>Docker Compose è uno strumento che consente di definire e gestire applicazioni multi-container. È stato utilizzato per definire i servizi del nostro stack applicativo, inclusi il server web Apache e PHP, insieme alle reti e ai volumi necessari.</p>
+    </section>
 
-    <footer>
-        <p>&copy; 2024 Progetto AWS - all rights reserved</p>
-    </footer>
+    <section>
+        <h2>Docker Networks</h2>
+        <p>Le Docker Networks permettono ai container di comunicare tra loro in modo sicuro e isolato. Sono state utilizzate per creare una rete virtuale privata in cui i container possono scambiarsi dati in sicurezza.</p>
+    </section>
+
+    <section>
+        <h2>Dockerfile</h2>
+        <p>Il Dockerfile contiene le istruzioni per la creazione di un'immagine Docker. È stato utilizzato per configurare l'immagine del server web Apache, specificando dipendenze, configurazioni e codice dell'applicazione.</p>
+    </section>
+
+    <section>
+        <h2>OpenSSL (per HTTPS)</h2>
+        <p>OpenSSL è una libreria open source per protocolli di crittografia e sicurezza. È stata utilizzata per generare un certificato SSL self-signed, abilitando la connessione HTTPS sicura al nostro server web Apache.</p>
+    </section>
+
+    <section>
+        <h2>Apache</h2>
+        <p>Apache HTTP Server è un server web open source ampiamente utilizzato. È stato impiegato per ospitare il nostro sito web single page e servire pagine web dinamiche con PHP.</p>
+    </section>
+
+    <section>
+        <h2>PHP</h2>
+        <p>PHP è un linguaggio di programmazione per lo sviluppo di pagine web dinamiche. È stato utilizzato per gestire la logica di backend del nostro sito web, inclusa l'autenticazione degli utenti, l'accesso al database e la generazione dinamica del contenuto delle pagine.</p>
+    </section>
+
+    <section>
+        <h2>HTML</h2>
+        <p>HTML è il linguaggio di markup standard per la creazione di pagine web. È stato utilizzato per definire la struttura del nostro sito web single page, inclusi l'header, la sezione di contenuto e il footer.</p>
+    </section>
+
+    <section>
+        <h2>CSS</h2>
+        <p>CSS è un linguaggio di stile per la definizione dell'aspetto e della formattazione di una pagina web. È stato utilizzato per applicare stili al sito web, rendendolo visivamente più gradevole e professionale.</p>
+    </section>
+
+    <section>
+        <h2>Passaggi Eseguiti</h2>
+        <p>
+            La prima cosa da fare è creare un'istanza EC2 su AWS:
+            <br>
+            - Accedi al servizio AWS.
+            <br>
+            - Vai su "Modules" e seleziona "Launch AWS Academy Learner Lab".
+            <br>
+            - Seleziona l'istanza e avvia il lab.
+            <br>
+            - Seleziona "AWS" e poi "EC2".
+            <br>
+            - Crea o seleziona un'istanza esistente.
+            <br>
+            - Compila il form con nome, seleziona Ubuntu, inserisci la coppia di chiavi e connettiti all'istanza.
+        </p>
+        <p>
+            Per installare Docker, usa i seguenti comandi:
+        <pre>
+<code>
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code>
+                </pre>
+        </p>
+        <p>
+            Per installare le immagini Docker:
+        <pre>
+<code>
+sudo docker pull mysql
+sudo docker pull php:8.2-apache
+</code>
+                </pre>
+        </p>
+        <p>
+            Dockerfile per l'immagine Apache:
+        <pre>
+<code>
+FROM php:8.2-apache
+COPY ./public-html/ /var/www/html
+COPY ./keys/ssl-cert-snakeoil.key /etc/ssl/private
+COPY ./keys/ssl-cert-snakeoil.pem /etc/ssl/certs
+RUN sed -i '/<\/VirtualHost>/ i RewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}' /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
+RUN a2enmod ssl
+RUN a2ensite default-ssl
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+</code>
+                </pre>
+        </p>
+        <p>
+            File `docker-compose.yaml`:
+        <pre>
+<code>
+services:
+  web_server:
+    build: progettoAWS
+    depends_on:
+      - database
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - rete
+
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database
+    networks:
+      - rete
+
+networks:
+  rete:
+</code>
+                </pre>
+        </p>
+        <p>
+            Per generare il certificato SSL self-signed:
+        <pre>
+<code>
+openssl req -nodes -new -x509 -keyout keys/ssl-cert-snakeoil.key -out keys/ssl-cert-snakeoil.pem
+</code>
+                </pre>
+        </p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Sito Web Single Page. Tutti i diritti riservati.</p>
+</footer>
 </body>
 
 </html>
